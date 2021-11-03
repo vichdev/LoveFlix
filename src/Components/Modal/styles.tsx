@@ -7,17 +7,22 @@ export const backgroundModal = styled.div<{ isOpen?: boolean }>`
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   display: ${(props) => (props.isOpen ? "flex" : "none")};
   justify-content: center;
   align-items: center;
 `;
 
 export const Modal = styled.div`
-  background-color: red;
-  width: 50%;
-  height: 50%;
+  background-color: #000;
+  width: 400px;
+  height: 300px;
+  border-radius: 5%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e50000;
   svg {
     color: #fff;
     font-size: 50px;

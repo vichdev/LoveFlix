@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../../Components/Header";
 import * as Styles from "./styles";
 import Button from "../../common/Button";
+import Header2 from "../../Components/Header2";
 
 const Users: React.FC = () => {
   return (
     <>
-      <Header />
+      <Header2 />
       <Styles.GenerateWrapper>
         <Styles.ContainerGenerate>
           <Styles.ContentContainer>
@@ -23,29 +23,6 @@ const Users: React.FC = () => {
           <Styles.ContentContainer>
             <Styles.Title>Filmes</Styles.Title>
             <Styles.Content>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>Pizzadsadasasdas</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abcdasdasdasasd</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abcdasdassadsad</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abcffffffffffffff</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abceeeeeeeeeeeeee</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
-              <Styles.SpanContent>abc</Styles.SpanContent>
               <Styles.SpanContent>abc</Styles.SpanContent>
             </Styles.Content>
           </Styles.ContentContainer>
