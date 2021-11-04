@@ -33,7 +33,7 @@ export const CoupleImg = styled.img`
   height: 500px;
 `;
 
-export const FormRegister = styled.form`
+export const FormRegister = styled.div`
   max-height: 500px;
   max-width: 382px;
   width: 100%;

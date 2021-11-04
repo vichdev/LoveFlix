@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Button } from "../../common/Button/styles";
 
 export const Header = styled.header`
   width: 100%;
@@ -17,3 +18,7 @@ export const HeaderWrapper = styled.div`
 
   background: #000;
 `;
+
+export const BtnModal = styled(Button)`
+  margin-top: 1rem;
+`

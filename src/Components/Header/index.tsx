@@ -32,7 +32,7 @@ const Header: React.FC<IPropsModal> = () => {
           <Input type="text" />
           <Label name="Senha" color="#e50000" />
           <Input type="password" />
-          <Button text="Entrar" onClick={userPage} />
+          <Styles.BtnModal onClick={userPage}>Entrar</Styles.BtnModal>
         </Forms>
       </Modal>
     </>

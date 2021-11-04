@@ -1,14 +1,14 @@
 import React from "react";
 import { GlobalStyles } from "./styles/globalStyles";
-import Principal from "./pages/Principal";
 import Routes from "./routes";
+import { Context } from "./context/authContext";
 
 const App: React.FC = () => {
   return (
-    <>
+    <Context>
       <GlobalStyles />
       <Routes />
-    </>
+    </Context>
   );
 };
 

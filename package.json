@@ -10,6 +10,7 @@
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
     "animate-css-styled-components": "^1.0.2",
+    "axios": "^0.24.0",
     "eslint": "^8.1.0",
     "eslint-plugin-react": "^7.26.1",
     "i": "^0.3.7",
