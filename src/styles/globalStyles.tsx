@@ -13,6 +13,9 @@ body {
   font: 400 14px Roboto, sans-serif;
   background-color: #141414;
   overflow-y: hidden;
+  @media only screen and (max-width: 600px) {
+    overflow-y: scroll;
+  }
 }
 
 input,

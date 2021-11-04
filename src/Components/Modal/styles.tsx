@@ -30,4 +30,8 @@ export const Modal = styled.div`
     top: 0;
     right: 0;
   }
+
+  @media only screen and (max-width: 600px) {
+    width: 270px;
+  }
 `;

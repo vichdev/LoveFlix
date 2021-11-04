@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Button } from "../../common/Button/styles";
-import background from "../../assets/hearts.png";
 
 export const SectionWrapper = styled.section`
   width: 100%;
@@ -11,6 +10,9 @@ export const SectionWrapper = styled.section`
   align-items: center;
 
   background-color: #141414;
+  @media only screen and (max-width: 768px) {
+    height: 800px;
+  }
 `;
 
 export const ContainerForms = styled.div`
@@ -19,6 +21,18 @@ export const ContainerForms = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 150px;
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    height: 100vh;
+    margin-bottom: 0;
+  }
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    height: 100vh;
+    margin-bottom: 0;
+    justify-content: space-evenly;
+  }
 `;
 
 export const Register = styled.h1`
@@ -31,6 +45,16 @@ export const Register = styled.h1`
 export const CoupleImg = styled.img`
   width: 500px;
   height: 500px;
+  @media only screen and (max-width: 600px) {
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 768px) {
+    width: 250px;
+    height: 250px;
+    justify-content: center;
+  }
 `;
 
 export const FormRegister = styled.div`
@@ -47,8 +71,18 @@ export const FormRegister = styled.div`
   background-color: #000;
   box-shadow: 0px 0px 5px red;
   outline: 50;
+
+  @media only screen and (max-width: 600px) {
+    width: 280px;
+
+    max-height: 300px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 380px;
+
+    max-height: 400px;
+  }
 `;
 
-export const BtnRegister = styled(Button)`
-  margin-top: 1rem;
-`;
+export const BtnRegister = styled(Button)``;

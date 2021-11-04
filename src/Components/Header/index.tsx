@@ -8,6 +8,7 @@ import Input from "../../common/Input";
 import Label from "../../common/Labels";
 import { IPropsModal } from "../Modal/types";
 import { useHistory } from "react-router";
+import { FiLogIn } from "react-icons/fi";
 
 const Header: React.FC<IPropsModal> = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -23,7 +24,10 @@ const Header: React.FC<IPropsModal> = () => {
       <Styles.Header>
         <Styles.HeaderWrapper>
           <Logo />
-          <Button text="Entrar" onClick={() => setOpen(!open)} />
+          <Styles.BtnLogIn onClick={() => setOpen(!open)}>
+            Entrar
+          </Styles.BtnLogIn>
+          <FiLogIn onClick={() => setOpen(!open)} />
         </Styles.HeaderWrapper>
       </Styles.Header>
       <Modal isOpen={open} onClose={() => setOpen(!open)}>
