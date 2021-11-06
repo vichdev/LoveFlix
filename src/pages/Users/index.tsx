@@ -1,12 +1,12 @@
 import React from "react";
 import * as Styles from "./styles";
 import Button from "../../common/Button";
-import Header2 from "../../Components/Header2";
+import Header from "../../Components/Header";
 
 const Users: React.FC = () => {
   return (
     <>
-      <Header2 />
+      <Header />
       <Styles.GenerateWrapper>
         <Styles.ContainerGenerate>
           <Styles.ContentContainer>
