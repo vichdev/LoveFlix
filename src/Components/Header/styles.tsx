@@ -38,7 +38,7 @@ export const HeaderWrapper = styled.div`
     }
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 950px) {
     width: 100%;
     display: flex;
     padding: 5px;

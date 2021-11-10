@@ -12,11 +12,18 @@ export const SectionWrapper = styled.section`
   background-color: #141414;
   @media only screen and (max-width: 768px) and (min-width: 600px) {
     height: 800px;
-  }
-  @media only screen and (max-width: 600px) {
+    width: 100%;
+
+    display: flex;
     flex-direction: column;
-    height: 100%;
-    margin-bottom: 0;
+  }
+  @media only screen and (max-width: 1000px) and (min-width: 768px) {
+    height: 800px;
+    height: 800px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -39,6 +46,11 @@ export const ContainerForms = styled.div`
     margin-bottom: 0;
     justify-content: space-evenly;
   }
+  @media only screen and (max-width: 1000px) and (min-width: 768px) {
+    height: 800px;
+    margin-bottom: 0;
+    justify-content: space-evenly;
+  }
 `;
 
 export const Register = styled.h1`
@@ -51,7 +63,7 @@ export const Register = styled.h1`
 export const CoupleImg = styled.img`
   width: 500px;
   height: 500px;
-  @media only screen and (max-width: 350px) {
+  @media only screen and (max-width: 360px) and (min-width: 0px) {
     width: 150px;
     height: 150px;
     justify-content: center;
@@ -66,6 +78,11 @@ export const CoupleImg = styled.img`
     height: 300px;
     justify-content: center;
   }
+  @media only screen and (max-width: 1000px) and (min-width: 768px) {
+    width: 300px;
+    height: 300px;
+    justify-content: center;
+  } ;
 `;
 
 export const FormRegister = styled.div`
@@ -93,6 +110,10 @@ export const FormRegister = styled.div`
     width: 380px;
 
     max-height: 400px;
+  }
+  @media only screen and (max-width: 1000px) and (min-width: 768px) {
+    width: 380px;
+    height: 500px;
   }
 `;
 
