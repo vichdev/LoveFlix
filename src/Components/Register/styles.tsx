@@ -10,8 +10,13 @@ export const SectionWrapper = styled.section`
   align-items: center;
 
   background-color: #141414;
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) and (min-width: 600px) {
     height: 800px;
+  }
+  @media only screen and (max-width: 600px) {
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 0;
   }
 `;
 
@@ -24,10 +29,11 @@ export const ContainerForms = styled.div`
 
   @media only screen and (max-width: 600px) {
     flex-direction: column;
-    height: 100vh;
+    height: 600px;
     margin-bottom: 0;
+    justify-content: space-evenly;
   }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) and (min-width: 600px) {
     flex-direction: column;
     height: 100vh;
     margin-bottom: 0;
@@ -45,14 +51,19 @@ export const Register = styled.h1`
 export const CoupleImg = styled.img`
   width: 500px;
   height: 500px;
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 350px) {
     width: 150px;
     height: 150px;
     justify-content: center;
   }
-  @media only screen and (max-width: 768px) {
-    width: 250px;
-    height: 250px;
+  @media only screen and (max-width: 700px) and (min-width: 360px) {
+    width: 220px;
+    height: 220px;
+    justify-content: center;
+  }
+  @media only screen and (max-width: 768px) and (min-width: 700px) {
+    width: 300px;
+    height: 300px;
     justify-content: center;
   }
 `;
@@ -78,7 +89,7 @@ export const FormRegister = styled.div`
     max-height: 300px;
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 768px) and (min-width: 600px) {
     width: 380px;
 
     max-height: 400px;

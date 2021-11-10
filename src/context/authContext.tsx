@@ -1,68 +1,83 @@
-import React, { createContext, useContext, useState } from 'react';
-import { Auth } from '../models/auth';
-import api from '../services/api';
-import {User} from '../models/user'
-import history from '../history';
+import React, { createContext, useContext, useState } from "react";
+import { Auth } from "../models/auth";
+import api from "../services/api";
+import { User } from "../models/user";
+import history from "../history";
 
-const AuthContext = createContext<Auth>({} as Auth)
+const AuthContext = createContext<Auth>({} as Auth);
 
-const Context: React.FC = ({children}) => {
-  const [isMessage, setIsMessage] = useState<boolean>(false)
-  const [message, setMessage] = useState<string>() 
-  const [user, setUser] = useState<User>()
-  const [isUsuarioLogado, setIsUsuarioLogado] = useState<boolean>(!!sessionStorage.getItem('usuario'))
+const Context: React.FC = ({ children }) => {
+  const [isMessage, setIsMessage] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>();
+  const [user, setUser] = useState<User>();
+  const [isUsuarioLogado, setIsUsuarioLogado] = useState<boolean>(
+    !!sessionStorage.getItem("usuario")
+  );
 
-  const Register = (name:string, password:String) => {
+  const Register = (name: string, password: String) => {
     const body = {
       name: name,
-      password: password
-    }
-      api.post("/auth/register", body).then(response => {
-        sessionStorage.setItem('usuario', JSON.stringify(response.data.token))
-      }).catch(() => {
+      password: password,
+    };
+    api
+      .post("/auth/register", body)
+      .then((response) => {
+        sessionStorage.setItem("usuario", JSON.stringify(response.data.token));
       })
-  }
+      .catch(() => {});
+  };
 
-  const Login = async(name:string, password:String) => {
+  const Login = async (name: string, password: String) => {
     const body = {
       name: name,
-      password: password
-    }
+      password: password,
+    };
     try {
       const user = await api.post("/auth/authenticate", body);
-      console.log(user)
-      sessionStorage.setItem('usuario', JSON.stringify(user.data.token))
-      setUser(user.data.user)
+      console.log(user);
+      sessionStorage.setItem("usuario", JSON.stringify(user.data.token));
+      setUser(user.data.user);
       history.push("/user");
-      setIsUsuarioLogado(true)
-      return user
+      setIsUsuarioLogado(true);
+      return user;
     } catch (error) {
-      return error
+      return error;
     }
-  }
+  };
 
-  async function signOut () {
-    sessionStorage.clear()
-    setIsUsuarioLogado(false)
+  async function signOut() {
+    sessionStorage.clear();
+    setIsUsuarioLogado(false);
     setTimeout(() => {
-      setUser(undefined)
-    }, 1000)
+      setUser(undefined);
+    }, 1000);
   }
-
 
   return (
-    <AuthContext.Provider value={{Register,Login, message, isMessage, user, signOut, isUsuarioLogado}}>
-        {children}
+    <AuthContext.Provider
+      value={{
+        Register,
+        Login,
+        message,
+        isMessage,
+        user,
+        signOut,
+        isUsuarioLogado,
+      }}
+    >
+      {children}
     </AuthContext.Provider>
-  )
+  );
+};
+
+function useAuth() {
+  const context = useContext(AuthContext);
+
+  if (!context) {
+    throw new Error("O Hook useAuth deve ser usado com um provider!");
+  }
+
+  return context;
 }
 
-function useAuth () {
-  const context = useContext(AuthContext)
-
-  if (!context) { throw new Error('O Hook useAuth deve ser usado com um provider!') }
-
-  return context
-}
-
-export { Context, useAuth }
+export { Context, useAuth };
