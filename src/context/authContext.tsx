@@ -10,9 +10,14 @@ const Context: React.FC = ({ children }) => {
   const [isMessage, setIsMessage] = useState<boolean>(false);
   const [message, setMessage] = useState<string>();
   const [user, setUser] = useState<User>();
-  const [isUsuarioLogado, setIsUsuarioLogado] = useState<boolean>(
-    !!sessionStorage.getItem("usuario")
-  );
+
+  const isAuthenticate = () => {
+    if (sessionStorage.getItem("usuario") !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   const Register = (name: string, password: String) => {
     const body = {
@@ -38,7 +43,6 @@ const Context: React.FC = ({ children }) => {
       sessionStorage.setItem("usuario", JSON.stringify(user.data.token));
       setUser(user.data.user);
       history.push("/user");
-      setIsUsuarioLogado(true);
       return user;
     } catch (error) {
       return error;
@@ -47,7 +51,7 @@ const Context: React.FC = ({ children }) => {
 
   async function signOut() {
     sessionStorage.clear();
-    setIsUsuarioLogado(false);
+    history.push("/");
     setTimeout(() => {
       setUser(undefined);
     }, 1000);
@@ -62,7 +66,7 @@ const Context: React.FC = ({ children }) => {
         isMessage,
         user,
         signOut,
-        isUsuarioLogado,
+        isAuthenticate,
       }}
     >
       {children}

@@ -9,22 +9,21 @@ interface PrivateRouteProps {
   path: string;
   exact: boolean;
 }
+const PrivateRoute: React.FC<PrivateRouteProps> = ({
+  path,
+  exact,
+  component,
+}) => {
+  const { isAuthenticate } = useAuth();
+
+  return isAuthenticate() ? (
+    <Route path={path} exact={exact} component={component} />
+  ) : (
+    <Redirect to="/" />
+  );
+};
 
 const Routes: React.FC = () => {
-  const PrivateRoute: React.FC<PrivateRouteProps> = ({
-    path,
-    exact,
-    component,
-  }) => {
-    const isUsuarioLogado = useAuth();
-
-    return isUsuarioLogado ? (
-      <Route path={path} exact={exact} component={component} />
-    ) : (
-      <Redirect to="/" />
-    );
-  };
-
   return (
     <Switch>
       <Route path="/" exact component={Principal} />

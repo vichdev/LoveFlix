@@ -6,13 +6,14 @@ import Forms from "../../common/Form";
 import Input from "../../common/Input";
 import Label from "../../common/Labels";
 import { IPropsModal } from "../Modal/types";
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiPower } from "react-icons/fi";
 import { useAuth } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
 
 const Header: React.FC<IPropsModal> = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const { Login, isMessage, message, user } = useAuth();
+  const [logout, setLogOut] = useState<boolean>(false);
+  const { Login, isMessage, message, user, signOut } = useAuth();
   const location = useLocation();
 
   return (
@@ -30,20 +31,27 @@ const Header: React.FC<IPropsModal> = () => {
       ) : (
         <Styles.Header>
           <Styles.HeaderWrapper>
-            <Logo />
-            <span style={{ color: "#fff" }}>Bem Vindo(a), {user?.name}</span>
-            <Styles.BtnLogIn onClick={() => setOpen(!open)}>
+            <Styles.UserWrapper>
+              <Logo />
+              <Styles.UserLogged style={{ color: "#fff" }}>
+                Bem Vindo(a), {user?.name}
+              </Styles.UserLogged>
+            </Styles.UserWrapper>
+            <Styles.BtnGenerate onClick={() => setOpen(!open)}>
               + Comida
-            </Styles.BtnLogIn>
-            <Styles.BtnLogIn onClick={() => setOpen(!open)}>
+            </Styles.BtnGenerate>
+            <Styles.BtnGenerate onClick={() => setOpen(!open)}>
               + Sobremesa
-            </Styles.BtnLogIn>
-            <Styles.BtnLogIn onClick={() => setOpen(!open)}>
+            </Styles.BtnGenerate>
+            <Styles.BtnGenerate onClick={() => setOpen(!open)}>
               + Bebida
-            </Styles.BtnLogIn>
-            <Styles.BtnLogIn onClick={() => setOpen(!open)}>
+            </Styles.BtnGenerate>
+            <Styles.BtnGenerate onClick={() => setOpen(!open)}>
               + Filme
-            </Styles.BtnLogIn>
+            </Styles.BtnGenerate>
+            <Styles.IconLogOutWrapper>
+              <FiPower onClick={() => setLogOut(!logout)} />
+            </Styles.IconLogOutWrapper>
             <FiLogIn onClick={() => setOpen(!open)} />
           </Styles.HeaderWrapper>
         </Styles.Header>
@@ -59,6 +67,19 @@ const Header: React.FC<IPropsModal> = () => {
           </Styles.BtnModal>
           {isMessage ? <h1>{message}</h1> : ""}
         </Forms>
+      </Modal>
+      <Modal isOpen={logout} onClose={() => setLogOut(!logout)}>
+        <Styles.LogOutWrapper>
+          <Styles.MessageLogOut>
+            Tem certeza que deseja Sair?
+          </Styles.MessageLogOut>
+          <Styles.ButtonWrapper>
+            <Styles.ButtonLogOut onClick={signOut}>Sim</Styles.ButtonLogOut>
+            <Styles.ButtonLogOut onClick={() => setLogOut(!logout)}>
+              Não
+            </Styles.ButtonLogOut>
+          </Styles.ButtonWrapper>
+        </Styles.LogOutWrapper>
       </Modal>
     </>
   );
