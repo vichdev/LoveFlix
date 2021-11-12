@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Styles from "./styles";
 import Logo from "../../common/Logo";
 import Modal from "../Modal";
@@ -6,15 +6,34 @@ import Forms from "../../common/Form";
 import Input from "../../common/Input";
 import Label from "../../common/Labels";
 import { IPropsModal } from "../Modal/types";
-import { FiLogIn, FiPower } from "react-icons/fi";
+import { FiMenu } from "react-icons/fi";
 import { useAuth } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
+import api from "../../services/api";
+import { UserInfos } from "../../models/dadosUser";
+import { User } from "../../models/user";
 
 const Header: React.FC<IPropsModal> = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [logout, setLogOut] = useState<boolean>(false);
-  const { Login, isMessage, message, user, signOut } = useAuth();
+  const { Login, isMessage, message, dados, signOut } = useAuth();
   const location = useLocation();
+
+  const addFood = async (food: string) => {
+    const header = {
+      Authorization: `Bearer ${dados?.token}`,
+    };
+    const body = {
+      food: food,
+    };
+    await api.post("foods/food", body, { headers: header }).then((response) => {
+      if (response.status === 200) {
+        setOpen(false);
+      } else {
+        alert("deu ruiim");
+      }
+    });
+  };
 
   return (
     <>
@@ -25,7 +44,7 @@ const Header: React.FC<IPropsModal> = () => {
             <Styles.BtnLogIn onClick={() => setOpen(!open)}>
               Entrar
             </Styles.BtnLogIn>
-            <FiLogIn onClick={() => setOpen(!open)} />
+            <FiMenu onClick={() => setOpen(!open)} />
           </Styles.HeaderWrapper>
         </Styles.Header>
       ) : (
@@ -34,7 +53,7 @@ const Header: React.FC<IPropsModal> = () => {
             <Styles.UserWrapper>
               <Logo />
               <Styles.UserLogged style={{ color: "#fff" }}>
-                Bem Vindo(a), {user?.name}
+                Bem Vindo(a), {dados?.user.name}
               </Styles.UserLogged>
             </Styles.UserWrapper>
             <Styles.BtnGenerate onClick={() => setOpen(!open)}>
@@ -49,10 +68,8 @@ const Header: React.FC<IPropsModal> = () => {
             <Styles.BtnGenerate onClick={() => setOpen(!open)}>
               + Filme
             </Styles.BtnGenerate>
-            <Styles.IconLogOutWrapper>
-              <FiPower onClick={() => setLogOut(!logout)} />
-            </Styles.IconLogOutWrapper>
-            <FiLogIn onClick={() => setOpen(!open)} />
+            <Styles.LogOut> Sair </Styles.LogOut>
+            <FiMenu onClick={() => setOpen(!open)} />
           </Styles.HeaderWrapper>
         </Styles.Header>
       )}
@@ -62,7 +79,7 @@ const Header: React.FC<IPropsModal> = () => {
           <Input type="text" />
           <Label name="Senha" color="#e50000" />
           <Input type="password" />
-          <Styles.BtnModal onClick={() => Login("monica", "123456")}>
+          <Styles.BtnModal onClick={() => addFood("batata")}>
             Entrar
           </Styles.BtnModal>
           {isMessage ? <h1>{message}</h1> : ""}

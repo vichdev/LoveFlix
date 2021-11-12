@@ -20,9 +20,9 @@ export const HeaderWrapper = styled.div`
   svg {
     color: #fff;
     font-size: 50px;
-    background: #e50000;
+
     border-radius: 10%;
-    border: solid 1px #fff;
+
     padding: 5px;
     display: none;
   }
@@ -78,25 +78,24 @@ export const BtnLogIn = styled(Button)`
 
 export const BtnGenerate = styled(Button)`
   width: 110px;
-`;
 
-export const IconLogOutWrapper = styled.div`
-  svg {
-    display: flex;
-    color: #fff;
-    font-size: 50px;
-    background: #e50000;
-    border-radius: 50%;
-    border: black;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    display: none;
     padding: 5px;
-    opacity: 0.9;
-
-    &:hover {
-      text-indent: 30px;
-      transition: 0.5s ease;
-      opacity: 1;
+    margin: 0 auto;
+    justify-content: space-around;
+    svg {
+      display: block;
+      font-size: 40px;
     }
   }
+`;
+
+export const LogOut = styled.button`
+  background: none;
+  color: #fff;
+  font-size: 16px;
 `;
 
 // Modal LogOut

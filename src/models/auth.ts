@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { UserInfos } from "./dadosUser";
 
 export interface Auth {
   Register(name: string, password: string): void;
@@ -6,6 +6,6 @@ export interface Auth {
   signOut?: () => void;
   message?: string;
   isMessage?: boolean;
-  user?: User;
+  dados?: UserInfos;
   isAuthenticate: () => boolean;
 }

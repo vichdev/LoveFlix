@@ -1,15 +1,23 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { Auth } from "../models/auth";
 import api from "../services/api";
-import { User } from "../models/user";
 import history from "../history";
+import { UserInfos } from "../models/dadosUser";
 
 const AuthContext = createContext<Auth>({} as Auth);
 
 const Context: React.FC = ({ children }) => {
   const [isMessage, setIsMessage] = useState<boolean>(false);
   const [message, setMessage] = useState<string>();
-  const [user, setUser] = useState<User>();
+  const [dados, setDados] = useState<UserInfos>();
+
+  useEffect(() => {
+    const getDados = sessionStorage.getItem("dados");
+    if (getDados) {
+      const dadosRefatorados = JSON.parse(getDados);
+      setDados(dadosRefatorados);
+    }
+  }, []);
 
   const isAuthenticate = () => {
     if (sessionStorage.getItem("usuario") !== null) {
@@ -39,9 +47,9 @@ const Context: React.FC = ({ children }) => {
     };
     try {
       const user = await api.post("/auth/authenticate", body);
-      console.log(user);
       sessionStorage.setItem("usuario", JSON.stringify(user.data.token));
-      setUser(user.data.user);
+      sessionStorage.setItem("dados", JSON.stringify(user.data));
+      setDados(user.data);
       history.push("/user");
       return user;
     } catch (error) {
@@ -53,7 +61,7 @@ const Context: React.FC = ({ children }) => {
     sessionStorage.clear();
     history.push("/");
     setTimeout(() => {
-      setUser(undefined);
+      setDados(undefined);
     }, 1000);
   }
 
@@ -64,7 +72,7 @@ const Context: React.FC = ({ children }) => {
         Login,
         message,
         isMessage,
-        user,
+        dados,
         signOut,
         isAuthenticate,
       }}
