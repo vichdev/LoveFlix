@@ -67,7 +67,7 @@ const Header: React.FC<IPropsModal> = () => {
     };
     await api.post("foods/food", body, { headers: header }).then((response) => {
       if (response.status === 200) {
-        setOpen(false);
+        setOpenFood(false);
       } else {
         alert("deu ruiim");
       }
@@ -182,17 +182,10 @@ const Header: React.FC<IPropsModal> = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Styles.BtnModal onClick={() => Login(name, password)}>
+          <Styles.BtnModal type="submit" onClick={() => Login(name, password)}>
             Entrar
           </Styles.BtnModal>
-          {isMessage ? (
-            <ErrorMessage>
-              {" "}
-              Usuário não existe ou não está cadastrado.{" "}
-            </ErrorMessage>
-          ) : (
-            ""
-          )}
+          {isMessage ? <ErrorMessage>{message}</ErrorMessage> : ""}
         </Forms>
       </Modal>
       <Modal isOpen={openFood} onClose={() => setOpenFood(!openFood)}>
