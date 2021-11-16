@@ -4,6 +4,7 @@ export const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 `;
 
 export const Logo = styled.img`
@@ -11,6 +12,7 @@ export const Logo = styled.img`
 `;
 
 export const TitleLogo = styled.h1`
+  margin: 0;
   color: #fff;
   font-size: 25px;
 `;

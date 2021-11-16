@@ -3,6 +3,7 @@ import Input from "../../common/Input";
 import Label from "../../common/Labels";
 import * as Styles from "./styles";
 import { useAuth } from "../../context/authContext";
+import ErrorMessage from "../../common/ErrorMessage";
 
 const Register: React.FC = () => {
   const [name, setName] = useState<string>("");
@@ -35,7 +36,7 @@ const Register: React.FC = () => {
           <Styles.BtnRegister onClick={() => Register(name, password)}>
             Registre-se
           </Styles.BtnRegister>
-          {isMessage ? <h1 style={{ color: "#fff" }}>{message}</h1> : ""}
+          {isMessage ? <ErrorMessage> Usuário já existe. </ErrorMessage> : ""}
         </Styles.FormRegister>
       </Styles.ContainerForms>
     </Styles.SectionWrapper>

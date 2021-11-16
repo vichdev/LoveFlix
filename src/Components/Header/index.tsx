@@ -10,12 +10,13 @@ import { FiMenu } from "react-icons/fi";
 import { useAuth } from "../../context/authContext";
 import { useLocation } from "react-router-dom";
 import api from "../../services/api";
-import { UserInfos } from "../../models/dadosUser";
-import { User } from "../../models/user";
+import ErrorMessage from "../../common/ErrorMessage";
+import MobileMenu from "../MobileMenu";
 
 const Header: React.FC<IPropsModal> = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [logout, setLogOut] = useState<boolean>(false);
+  const [mobile, setMobile] = useState<boolean>(false);
   const { Login, isMessage, message, dados, signOut } = useAuth();
   const location = useLocation();
 
@@ -68,8 +69,10 @@ const Header: React.FC<IPropsModal> = () => {
             <Styles.BtnGenerate onClick={() => setOpen(!open)}>
               + Filme
             </Styles.BtnGenerate>
-            <Styles.LogOut> Sair </Styles.LogOut>
-            <FiMenu onClick={() => setOpen(!open)} />
+            <Styles.LogOut onClick={() => setLogOut(!logout)}>
+              Sair
+            </Styles.LogOut>
+            <FiMenu onClick={() => setMobile(!mobile)} />
           </Styles.HeaderWrapper>
         </Styles.Header>
       )}
@@ -79,10 +82,17 @@ const Header: React.FC<IPropsModal> = () => {
           <Input type="text" />
           <Label name="Senha" color="#e50000" />
           <Input type="password" />
-          <Styles.BtnModal onClick={() => addFood("batata")}>
+          <Styles.BtnModal onClick={() => Login("monica", "123456")}>
             Entrar
           </Styles.BtnModal>
-          {isMessage ? <h1>{message}</h1> : ""}
+          {isMessage ? (
+            <ErrorMessage>
+              {" "}
+              Usuário não existe ou não está cadastrado.{" "}
+            </ErrorMessage>
+          ) : (
+            ""
+          )}
         </Forms>
       </Modal>
       <Modal isOpen={logout} onClose={() => setLogOut(!logout)}>
@@ -98,6 +108,7 @@ const Header: React.FC<IPropsModal> = () => {
           </Styles.ButtonWrapper>
         </Styles.LogOutWrapper>
       </Modal>
+      <MobileMenu />
     </>
   );
 };

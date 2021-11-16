@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Button } from "../../common/Button/styles";
-import { FiPower } from "react-icons/fi";
 
 export const Header = styled.header`
   width: 100%;
@@ -39,12 +38,16 @@ export const HeaderWrapper = styled.div`
     }
   }
 
-  @media only screen and (max-width: 950px) {
+  @media only screen and (max-width: 1000px) {
     width: 100%;
     display: flex;
     padding: 5px;
     margin: 0 auto;
     justify-content: space-around;
+    svg {
+      display: block;
+      font-size: 40px;
+    }
   }
   @media only screen and (max-width: 1640px) {
     width: 100%;
@@ -71,7 +74,7 @@ export const BtnModal = styled(Button)`
 `;
 
 export const BtnLogIn = styled(Button)`
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1000px) {
     display: none;
   }
 `;
@@ -79,16 +82,12 @@ export const BtnLogIn = styled(Button)`
 export const BtnGenerate = styled(Button)`
   width: 110px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1000px) {
     width: 100%;
     display: none;
     padding: 5px;
     margin: 0 auto;
     justify-content: space-around;
-    svg {
-      display: block;
-      font-size: 40px;
-    }
   }
 `;
 
@@ -96,6 +95,16 @@ export const LogOut = styled.button`
   background: none;
   color: #fff;
   font-size: 16px;
+  border: none;
+
+  &:hover {
+    color: #b82727;
+    transition: 0.4s ease;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    display: none;
+  }
 `;
 
 // Modal LogOut
