@@ -141,6 +141,10 @@ export const BtnLogIn = styled(Button)`
 
 export const BtnGenerate = styled(Button)`
   width: 110px;
+  &:active {
+    position: relative;
+    top: 1px;
+  }
 
   @media only screen and (max-width: 1000px) {
     width: 100%;

@@ -177,10 +177,18 @@ const Header: React.FC<IPropsModal> = () => {
             </Styles.ButtonWrapper>
           </Styles.HeaderWrapper>
           <MobileMenu menu={menuMobile}>
-            <Styles.BtnMobile>+ Comida</Styles.BtnMobile>
-            <Styles.BtnMobile>+ Sobremesa</Styles.BtnMobile>
-            <Styles.BtnMobile>+ Bebida</Styles.BtnMobile>
-            <Styles.BtnMobile>+ Filme</Styles.BtnMobile>
+            <Styles.BtnMobile onClick={() => setOpenFood(!openFood)}>
+              + Comida
+            </Styles.BtnMobile>
+            <Styles.BtnMobile onClick={() => setOpenDessert(!openDessert)}>
+              + Sobremesa
+            </Styles.BtnMobile>
+            <Styles.BtnMobile onClick={() => setOpenDrink(!openDrink)}>
+              + Bebida
+            </Styles.BtnMobile>
+            <Styles.BtnMobile onClick={() => setOpenMovie(!openMovie)}>
+              + Filme
+            </Styles.BtnMobile>
             <Styles.MobileLogOut onClick={() => setLogOut(!logout)}>
               Sair
             </Styles.MobileLogOut>
