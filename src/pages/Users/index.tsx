@@ -3,8 +3,13 @@ import * as Styles from "./styles";
 import Button from "../../common/Button";
 import Header from "../../Components/Header";
 import { Container, Row } from "react-bootstrap";
+import MobileMenu from "../../Components/MobileMenu";
+import { useState } from "react";
 
 const Users: React.FC = () => {
+  const [menuMobile, setMenu] = useState<boolean>(false);
+  const [logout, setLogOut] = useState<boolean>(false);
+
   return (
     <>
       <Header />

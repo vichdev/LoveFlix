@@ -4,7 +4,6 @@ import Button from "../../common/Button";
 
 export const GenerateWrapper = styled.div`
   width: 100%;
-  height: 100vh;
   padding: 2rem;
   background-color: #000;
 `;
@@ -30,21 +29,6 @@ export const Content = styled.div`
   max-height: 300px;
   height: 200px;
   overflow-y: scroll;
-  ::-webkit-scrollbar {
-    width: 0px;
-  }
-
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: red;
-    border-radius: 10px;
-  }
 `;
 
 export const SpanContent = styled.span`

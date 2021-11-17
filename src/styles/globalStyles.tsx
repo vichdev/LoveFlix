@@ -11,10 +11,13 @@ export const GlobalStyles = createGlobalStyle`
 
 body {
   font: 400 14px Roboto, sans-serif;
-  background-color: #000;
+  background-color: #141414;
   overflow-y: hidden;
   @media only screen and (max-width: 600px) {
     overflow-y: scroll;
+  }
+  @media only screen and (max-width: 1200px) and (min-width: 600px) {
+   background-color: #000;
   }
 }
 

@@ -8,8 +8,8 @@ export const SectionWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background-color: #141414;
+
   @media only screen and (max-width: 768px) and (min-width: 600px) {
     height: 800px;
     width: 100%;

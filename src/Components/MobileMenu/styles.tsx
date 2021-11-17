@@ -1,30 +1,31 @@
 import styled from "styled-components";
-import { Button } from "../../common/Button/styles";
 
-export const MobilePage = styled.div<{ mobile?: boolean }>`
+export const MobileMenu = styled.div<{ menu?: boolean }>`
   width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 1);
-  display: ${(props) => (props.mobile ? "flex" : "none")};
+  height: 100%;
+  max-height: 1550px;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: ${(props) => (props.menu ? "flex" : "none")};
+  position: absolute;
+  z-index: 9;
+
+  svg {
+    color: #fff;
+    font-size: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 `;
 
 export const MobileWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
   display: flex;
   flex-direction: column;
-`;
-
-export const BtnMobile = styled(Button)`
-  width: 110px;
-`;
-
-export const LogOutMessage = styled.button`
-  background: none;
-  color: #fff;
-  font-size: 16px;
-  border: none;
-
-  &:hover {
-    color: #b82727;
-    transition: 0.4s ease;
-  }
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-top: 1px solid red;
 `;

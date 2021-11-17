@@ -1,4 +1,6 @@
 export type IPropsMobile = {
-  mobile?: boolean;
+  menu?: boolean;
   display?: string;
+  onClick?: () => void;
+  onClose?: () => void;
 };

@@ -36,7 +36,7 @@ const Header: React.FC<IPropsModal> = () => {
   const [openDessert, setOpenDessert] = useState<boolean>(false);
   const [openMovie, setOpenMovie] = useState<boolean>(false);
   const [logout, setLogOut] = useState<boolean>(false);
-  const [mobile, setMobile] = useState<boolean>(false);
+  const [menuMobile, setMenu] = useState<boolean>(false);
   const { Login, isMessage, message, dados, signOut } = useAuth();
   const location = useLocation();
 
@@ -137,35 +137,54 @@ const Header: React.FC<IPropsModal> = () => {
             <Styles.BtnLogIn onClick={() => setOpen(!open)}>
               Entrar
             </Styles.BtnLogIn>
-            <FiMenu onClick={() => setOpen(!open)} />
+            <FiMenu onClick={() => setMenu(!menuMobile)} />
           </Styles.HeaderWrapper>
+          <MobileMenu menu={menuMobile}>
+            <Styles.BtnMobile onClick={() => setOpen(!open)}>
+              Entrar
+            </Styles.BtnMobile>
+          </MobileMenu>
         </Styles.Header>
       ) : (
         <Styles.Header>
           <Styles.HeaderWrapper>
             <Styles.UserWrapper>
-              <Logo />
-              <Styles.UserLogged style={{ color: "#fff" }}>
-                Bem Vindo(a), {dados?.user.name}
-              </Styles.UserLogged>
+              <Styles.UserContainer>
+                <Logo />
+                <Styles.UserLogged style={{ color: "#fff" }}>
+                  Bem Vindo(a), {dados?.user.name}
+                </Styles.UserLogged>
+              </Styles.UserContainer>
             </Styles.UserWrapper>
-            <Styles.BtnGenerate onClick={() => setOpenFood(!openFood)}>
-              + Comida
-            </Styles.BtnGenerate>
-            <Styles.BtnGenerate onClick={() => setOpenDessert(!openDessert)}>
-              + Sobremesa
-            </Styles.BtnGenerate>
-            <Styles.BtnGenerate onClick={() => setOpenDrink(!openDrink)}>
-              + Bebida
-            </Styles.BtnGenerate>
-            <Styles.BtnGenerate onClick={() => setOpenMovie(!openMovie)}>
-              + Filme
-            </Styles.BtnGenerate>
-            <Styles.LogOut onClick={() => setLogOut(!logout)}>
-              Sair
-            </Styles.LogOut>
-            <FiMenu onClick={() => setMobile(!mobile)} />
+            <FiMenu onClick={() => setMenu(!menuMobile)} />
+
+            <Styles.ButtonWrapper>
+              <Styles.BtnGenerate onClick={() => setOpenFood(!openFood)}>
+                + Comida
+              </Styles.BtnGenerate>
+              <Styles.BtnGenerate onClick={() => setOpenDessert(!openDessert)}>
+                + Sobremesa
+              </Styles.BtnGenerate>
+              <Styles.BtnGenerate onClick={() => setOpenDrink(!openDrink)}>
+                + Bebida
+              </Styles.BtnGenerate>
+              <Styles.BtnGenerate onClick={() => setOpenMovie(!openMovie)}>
+                + Filme
+              </Styles.BtnGenerate>
+              <Styles.LogOut onClick={() => setLogOut(!logout)}>
+                Sair
+              </Styles.LogOut>
+            </Styles.ButtonWrapper>
           </Styles.HeaderWrapper>
+          <MobileMenu menu={menuMobile}>
+            <Styles.BtnMobile>+ Comida</Styles.BtnMobile>
+            <Styles.BtnMobile>+ Sobremesa</Styles.BtnMobile>
+            <Styles.BtnMobile>+ Bebida</Styles.BtnMobile>
+            <Styles.BtnMobile>+ Filme</Styles.BtnMobile>
+            <Styles.MobileLogOut onClick={() => setLogOut(!logout)}>
+              Sair
+            </Styles.MobileLogOut>
+          </MobileMenu>
         </Styles.Header>
       )}
       <Modal isOpen={open} onClose={() => setOpen(!open)}>
@@ -251,15 +270,14 @@ const Header: React.FC<IPropsModal> = () => {
           <Styles.MessageLogOut>
             Tem certeza que deseja Sair?
           </Styles.MessageLogOut>
-          <Styles.ButtonWrapper>
+          <Styles.ButtonWrapperLogOut>
             <Styles.ButtonLogOut onClick={signOut}>Sim</Styles.ButtonLogOut>
             <Styles.ButtonLogOut onClick={() => setLogOut(!logout)}>
               Não
             </Styles.ButtonLogOut>
-          </Styles.ButtonWrapper>
+          </Styles.ButtonWrapperLogOut>
         </Styles.LogOutWrapper>
       </Modal>
-      <MobileMenu />
     </>
   );
 };
